@@ -1,7 +1,7 @@
 APP = build/Softfold.app
 SIGN_IDENTITY ?= $(shell security find-identity -v -p codesigning 2>/dev/null | awk -F'"' '/Apple Development/ { print $$2; exit }')
 
-.PHONY: build icon release
+.PHONY: build icon dmg release
 
 build:
 	xcodebuild -quiet -project Softfold.xcodeproj -scheme Softfold -configuration Release \
@@ -12,6 +12,10 @@ build:
 
 icon:
 	python3 scripts/make-icon.py
+
+dmg: build
+	chmod +x scripts/package-dmg.sh
+	./scripts/package-dmg.sh
 
 release:
 	scripts/release.sh
