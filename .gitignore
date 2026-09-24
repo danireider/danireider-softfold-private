@@ -1,0 +1,19 @@
+# Xcode
+build/
+DerivedData/
+SourcePackages/
+xcuserdata/
+
+# macOS
+.DS_Store
+
+# SwiftPM
+.swiftpm/
+
+# Tooling
+.venv/
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
